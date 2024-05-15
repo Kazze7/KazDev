@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace KazDev.QueueWorker
+namespace KazDev.Core
 {
     public class QueueWorker<T>
     {

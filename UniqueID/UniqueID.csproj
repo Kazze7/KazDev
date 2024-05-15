@@ -5,8 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <BaseOutputPath>..\bin\</BaseOutputPath>
-    <AssemblyName>KazDev.QueueWorker</AssemblyName>
-    <RootNamespace>KazDev.QueueWorker</RootNamespace>
+    <AssemblyName>KazDev.UniqueID</AssemblyName>
+    <RootNamespace>KazDev.UniqueID</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
