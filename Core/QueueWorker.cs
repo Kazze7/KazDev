@@ -7,8 +7,9 @@ namespace KazDev.Core
         bool isRunning = false;
 
         Thread workerThread;
-        ManualResetEvent nextItemEvent = new ManualResetEvent(false);
-        ConcurrentQueue<T> itemQueue = new ConcurrentQueue<T>();
+        ConcurrentQueue<T> itemQueue;
+        AutoResetEvent workerEvent = new(true);
+        ManualResetEvent nextItemEvent = new(false);
 
         public delegate void DequeueMethod(T _item);
         DequeueMethod dequeueMethod;
@@ -16,26 +17,31 @@ namespace KazDev.Core
         public QueueWorker(DequeueMethod _dequeueMethod)
         {
             dequeueMethod = _dequeueMethod;
+            workerThread = new Thread(StartQueue) { Name = "QueueWorker" };
+            itemQueue = new ConcurrentQueue<T>();
         }
 
         public void Start()
         {
+            workerEvent.WaitOne();
             if (!isRunning)
             {
                 isRunning = true;
-                workerThread = new Thread(StartQueue);
                 workerThread.Start();
             }
+            workerEvent.Set();
         }
         public void Stop()
         {
+            workerEvent.WaitOne();
             if (isRunning)
             {
                 isRunning = false;
                 nextItemEvent.Set();
-                workerThread?.Join();
+                workerThread = new Thread(StartQueue) { Name = "QueueWorker" };
                 itemQueue = new ConcurrentQueue<T>();
             }
+            workerEvent.Set();
         }
 
         void StartQueue()
@@ -44,9 +50,7 @@ namespace KazDev.Core
             while (isRunning)
             {
                 if (itemQueue.TryDequeue(out item))
-                {
                     dequeueMethod(item);
-                }
                 else
                 {
                     nextItemEvent.WaitOne();

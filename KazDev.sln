@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueID", "UniqueID\Unique
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{B56CAD2D-D6CB-496F-846F-772B0D387FAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "Benchmark\Benchmark.csproj", "{2D328AE1-C5E7-4B87-949D-EEF9FDEA78C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmark", "Benchmark\Benchmark.csproj", "{2D328AE1-C5E7-4B87-949D-EEF9FDEA78C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zTrash", "Trash\zTrash.csproj", "{04147148-DBEA-485A-A1C5-B7074A4E8821}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,10 @@ Global
 		{2D328AE1-C5E7-4B87-949D-EEF9FDEA78C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D328AE1-C5E7-4B87-949D-EEF9FDEA78C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D328AE1-C5E7-4B87-949D-EEF9FDEA78C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04147148-DBEA-485A-A1C5-B7074A4E8821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04147148-DBEA-485A-A1C5-B7074A4E8821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04147148-DBEA-485A-A1C5-B7074A4E8821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04147148-DBEA-485A-A1C5-B7074A4E8821}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
