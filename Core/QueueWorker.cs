@@ -5,6 +5,7 @@ namespace KazDev.Core
     public class QueueWorker<T>
     {
         bool isRunning = false;
+        public int TaskCount = { get => itemQueue.Count(); }
 
         Thread workerThread;
         ConcurrentQueue<T> itemQueue;
@@ -38,6 +39,7 @@ namespace KazDev.Core
             {
                 isRunning = false;
                 nextItemEvent.Set();
+                workerThread.Join();
                 workerThread = new Thread(StartQueue) { Name = "QueueWorker" };
                 itemQueue = new ConcurrentQueue<T>();
             }
