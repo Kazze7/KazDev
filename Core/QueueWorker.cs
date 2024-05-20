@@ -5,7 +5,7 @@ namespace KazDev.Core
     public class QueueWorker<T>
     {
         bool isRunning = false;
-        public int TaskCount = { get => itemQueue.Count(); }
+        public int TaskCount { get => itemQueue.Count(); }
 
         Thread workerThread;
         ConcurrentQueue<T> itemQueue;
