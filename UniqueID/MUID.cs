@@ -1,4 +1,6 @@
-﻿namespace KazDev.UniqueID
+﻿using System;
+
+namespace KazDev.UniqueID
 {
     public struct MUID
     {
@@ -13,6 +15,23 @@
             b = _b;
             c = _c;
             d = _d;
+        }
+        public MUID(ulong _mUID)
+        {
+            byte[] bytes = BitConverter.GetBytes(_mUID);
+            a = BitConverter.ToUInt16(bytes.ToArray(), 6);
+            b = BitConverter.ToUInt16(bytes.ToArray(), 4);
+            c = BitConverter.ToUInt16(bytes.ToArray(), 2);
+            d = BitConverter.ToUInt16(bytes.ToArray(), 0);
+        }
+        public MUID(string _mUID)
+        {
+            ulong ulongMUID = ulong.Parse(_mUID.Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+            byte[] bytes = BitConverter.GetBytes(ulongMUID);
+            a = BitConverter.ToUInt16(bytes.ToArray(), 6);
+            b = BitConverter.ToUInt16(bytes.ToArray(), 4);
+            c = BitConverter.ToUInt16(bytes.ToArray(), 2);
+            d = BitConverter.ToUInt16(bytes.ToArray(), 0);
         }
 
         public override string ToString()
@@ -51,7 +70,7 @@
         }
         public ulong ToUlong()
         {
-            return BitConverter.ToUInt64(ToByteArray(), 0);
+            return BitConverter.ToUInt64(ToByteArray());
         }
         public DateTime GetDateTime()
         {
