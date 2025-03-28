@@ -7,6 +7,7 @@
         public abstract void Loop();
 
         bool isRunning = false;
+        public bool IsRunning { get { return isRunning; } }
 
         public void Start()
         {
